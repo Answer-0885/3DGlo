@@ -8,13 +8,9 @@ body{
    font-size: 48px;
    line-height: 90px;
    letter-spacing: 5px; 
-   color:orange;
+   color:rgb(23, 182, 182);
    text-align: center;
-   border: 5px double blueviolet;
-}
-.today{
-   font-weight: bold;
-   color:orangered;
+   border: 5px dotted rgb(204, 16, 195);
 }
 .italic{
    font-style: italic;
