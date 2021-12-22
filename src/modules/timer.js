@@ -38,7 +38,7 @@ const timer = (deadLine) => {
          timerMinutes.textContent = '00';
          timerSeconds.textContent = '00';
       }
-      console.log(getTime.seconds);
+
    }
    setInterval(updateClock, 1000);
 }
