@@ -10,7 +10,8 @@ const timer = (deadLine) => {
       let days = Math.floor(timeRemaining / 60 / 60 / 24);
       let hours = Math.floor((timeRemaining / 60 / 60) % 24);
       let minutes = Math.floor((timeRemaining / 60) % 60);
-      let seconds = Math.floor(timeRemaining % 60)
+      let seconds = Math.floor(timeRemaining % 60);
+
 
       return {
          timeRemaining,
@@ -32,15 +33,17 @@ const timer = (deadLine) => {
       timerMinutes.textContent = addZero(getTime.minutes);
       timerSeconds.textContent = addZero(getTime.seconds);
 
+
       if (getTime.timeRemaining <= 0) {
-         clearInterval(updateClock);
+         clearInterval(timerClock);
          timerHours.textContent = '00';
          timerMinutes.textContent = '00';
          timerSeconds.textContent = '00';
       }
 
    }
-   setInterval(updateClock, 1000);
+   updateClock()
+   const timerClock = setInterval(updateClock, 1000);
 }
 
 
