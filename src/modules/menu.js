@@ -4,7 +4,8 @@ const menu = () => {
    const closeBtn = menu.querySelector('.close-btn');
    const menuItems = menu.querySelectorAll('ul>li>a');
    // const main = document.querySelector('main');
-   const mainBtn = document.querySelectorAll('main>a');
+   const mainBtn = document.querySelector('main>a');
+
    console.log(mainBtn);
 
    const handleMenu = () => {
