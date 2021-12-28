@@ -38,13 +38,9 @@ const timer = (deadLine) => {
          timerMinutes.textContent = '00';
          timerSeconds.textContent = '00';
       }
-      console.log(getTime.seconds);
-   }
+   };
    updateClock()
    const timer = setInterval(updateClock, 1000);
-
-
-}
-
+};
 
 export default timer

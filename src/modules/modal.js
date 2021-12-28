@@ -1,9 +1,7 @@
 const modal = () => {
    const modal = document.querySelector('.popup');
    const buttons = document.querySelectorAll('.popup-btn');
-   const closeBtn = modal.querySelector('.popup-close');
    const body = document.querySelector('body');
-   const popupContent = document.querySelector('.popup-content');
 
    //Переменные для анимации
    let end = 0,
@@ -35,18 +33,14 @@ const modal = () => {
          }
       })
    });
-   closeBtn.addEventListener('click', () => {
 
-      //Проверка размера экрана
-      if (window.screen.width < 768) {
-         modal.style.display = 'none'
-         body.style.overflow = 'auto'; /*запрещаем прокручивание страницы при открытом меню*/
-      } else {
-         modal.style.display = 'none'
+   modal.addEventListener('click', (e) => {
+      if (!e.target.closest('.popup-content') || e.target.classList.contains('popup-close')) {
+         modal.style.display = 'none';
          body.style.overflow = 'auto'; /*запрещаем прокручивание страницы при открытом меню*/
          end = 0;
          cancelAnimationFrame(popUpInterval);
-      }
+      };
    })
 }
 export default modal
