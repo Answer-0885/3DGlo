@@ -63,7 +63,5 @@ const check = () => {
    calcDay.addEventListener('input', (e) => {
       e.target.value = e.target.value.replace(/\D+/, "")
    });
-
-
 }
 export default check
