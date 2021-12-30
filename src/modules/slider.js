@@ -1,10 +1,10 @@
 const slider = () => {
    const sliderBlock = document.querySelector('.portfolio-content');
    const slides = document.querySelectorAll('.portfolio-item');
-   const dots = document.querySelectorAll('.dot');
+   let ulDots = document.querySelector('.portfolio-dots');
+   let dots = document.querySelectorAll('.dot');
 
-   const timeInterval = 2000;
-
+   let timeInterval = 2000;
    let currentSlide = 0;
    let interval;
 
@@ -16,6 +16,7 @@ const slider = () => {
    }
 
    const autoSlide = () => {
+
       prevSlide(slides, currentSlide, 'portfolio-item-active');
       prevSlide(dots, currentSlide, 'dot-active');
       currentSlide++;
@@ -37,7 +38,7 @@ const slider = () => {
    sliderBlock.addEventListener('click', (e) => {
       e.preventDefault()
 
-      if (!e.target.matches('.dot, portfolio-btn')) {
+      if (!e.target.matches('.dot, .portfolio-btn')) {
          return
       }
 
@@ -74,7 +75,19 @@ const slider = () => {
          startSlide(timeInterval);
       }
    }, true)
+   // Добавляем точки для слайдера
+   const dotAdd = () => {
+      for (let i = 0; i < slides.length; i++) {
+         let dots = document.createElement('li');
+         dots.classList.add('dot');
+         ulDots.append(dots);
+      }
+      ulDots.children[0].classList.add('dot-active');
+   };
 
-   startSlide(timeInterval);
+   if (sliderBlock && slides && ulDots) {
+      dotAdd();
+      startSlide(timeInterval);
+   }
 }
 export default slider;
