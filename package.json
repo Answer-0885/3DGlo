@@ -16,5 +16,13 @@
     "webpack-dev-server": "^4.6.0"
   },
   "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Answer-0885/3DGlo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Answer-0885/3DGlo/issues"
+  },
+  "homepage": "https://github.com/Answer-0885/3DGlo#readme",
   "description": ""
 }
