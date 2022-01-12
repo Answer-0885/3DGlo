@@ -9,16 +9,36 @@ const sendForm = ({
    const successText = 'Спасибо!Наш менеджер с вами свяжется.'
 
    const validate = (list) => {
-      let success = true
+      let success = true;
 
-      list.forEach(input => {
-         if (!input.classList.contains('success')) {
-            success = false
+      list.forEach((item) => {
+         if (item.classList.contains('form-email')) {
+            if (item.value.match(/[^A-Za-z0-9@\-_.!~*']/, "")) {
+               success = false;
+               return false;
+            }
+         } else if (item.classList.contains('form-phone')) {
+            if (item.value.match(/[^0-9()+\-]/, "")) {
+               success = false;
+               return false;
+            }
+         } else if (item.classList.contains('form-name') || item.classList.contains('top-form')) {
+            if (item.value.match(/\w+/, "")) {
+               success = false;
+               return false;
+            }
+         } else if (item.classList.contains('mess')) {
+            if (item.value.match(/[a-zA-Z'][a-zA-Z']+[a-zA-Z']?$/gi)) {
+               success = false;
+               console.log(item);
+               return false;
+            }
          }
-      })
 
-      return success
-   }
+      });
+
+      return success;
+   };
 
    const sendData = (data) => {
       return fetch('https://jsonplaceholder.typicode.com/posts', {
@@ -32,7 +52,7 @@ const sendForm = ({
 
    const submitForm = () => {
       const formElements = form.querySelectorAll('input')
-      const formData = new formData(form)
+      const formData = new FormData(form)
       const formBody = {}
 
       statusBlock.textContent = loadText

@@ -19,13 +19,13 @@ const check = () => {
 
    //Проверяем чтобы введены были только  цифры, круглые скобки и дефис
    form1Phone.addEventListener('input', (e) => {
-      e.target.value = e.target.value.replace(/[^0-9()\-]/, "");
+      e.target.value = e.target.value.replace(/[^0-9()+\-]/, "");
    });
    form2Phone.addEventListener('input', (e) => {
-      e.target.value = e.target.value.replace(/\d/, "");
+      e.target.value = e.target.value.replace(/[^0-9()+\-]/, "");
    });
    form3Phone.addEventListener('input', (e) => {
-      e.target.value = e.target.value.replace(/\d/, "");
+      e.target.value = e.target.value.replace(/[^0-9()+\-]/, "");
    });
 
    // Проверяем чтобы введена была только латиница, цифры и спец.символы 
