@@ -5,6 +5,7 @@ import check from './modules/check'
 import tabs from './modules/tabs'
 import slider from './modules/slider'
 import calc from './modules/calc'
+import sendForm from './modules/sendForm'
 
 
 timer('31 january 2022');
@@ -14,3 +15,10 @@ check();
 tabs();
 slider();
 calc(100);
+sendForm({
+   formId: 'form1',
+   someElem: [{
+      type: 'block',
+      id: 'total'
+   }]
+});
