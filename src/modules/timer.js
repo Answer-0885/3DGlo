@@ -33,14 +33,15 @@ const timer = (deadLine) => {
       timerSeconds.textContent = addZero(getTime.seconds);
 
       if (getTime.timeRemaining <= 0) {
-         clearInterval(timer);
+         clearInterval(timer1);
          timerHours.textContent = '00';
          timerMinutes.textContent = '00';
          timerSeconds.textContent = '00';
       }
    };
+   const timer1 = setInterval(updateClock, 1000);
    updateClock()
-   const timer = setInterval(updateClock, 1000);
+
 };
 
 export default timer

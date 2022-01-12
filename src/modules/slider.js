@@ -11,6 +11,7 @@ const slider = () => {
    const prevSlide = (elems, index, strClass) => {
       elems[index].classList.remove(strClass);
    }
+
    const nextSlide = (elems, index, strClass) => {
       elems[index].classList.add(strClass);
    }
