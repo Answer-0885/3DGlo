@@ -47,7 +47,7 @@ const check = () => {
       e.target.value = e.target.value.replace(/[^А-Яа-я]/, "")
    });
    form2Message.addEventListener('input', (e) => {
-      e.target.value = e.target.value.replace(/[^А-Яа-я]/, "")
+      e.target.value = e.target.value.replace(/[^А-Яа-я\.\?\,\:\!\"\'\-]/, "")
    });
    form3Name.addEventListener('input', (e) => {
       e.target.value = e.target.value.replace(/[^А-Яа-я]/, "")
