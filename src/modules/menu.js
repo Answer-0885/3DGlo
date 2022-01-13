@@ -6,6 +6,7 @@ const menu = () => {
 
 
    body.addEventListener('click', (e) => {
+      e.preventDefault()
 
       const eTarget = e.target.closest('a[href*="#"]');
 

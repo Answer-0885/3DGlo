@@ -1,3 +1,6 @@
+import {
+   animate
+} from './helper';
 const calc = (price = 100) => {
    const calcBlock = document.querySelector('.calc-block');
    const calcType = document.querySelector('.calc-type');
@@ -5,17 +8,14 @@ const calc = (price = 100) => {
    const calcCount = document.querySelector('.calc-count');
    const calcDay = document.querySelector('.calc-day');
    const total = document.querySelector('#total');
-
-
+   let totalValue = 0;
+   let checkValue = 0;
 
    const countCalc = () => {
       const calcTypeValue = +calcType.options[calcType.selectedIndex].value;
       const calcSquareValue = calcSquare.value;
-
-      let totalValue = 0;
       let calcCountValue = 1;
       let calcDayValue = 1;
-
 
       if (calcCount.value > 1) {
          calcCountValue += +calcCount.value / 10;
@@ -28,6 +28,7 @@ const calc = (price = 100) => {
       }
 
       if (calcType.value && calcSquare.value) {
+         checkValue = totalValue;
          totalValue = price * calcTypeValue * calcSquareValue * calcCountValue * calcDayValue;
       } else {
          totalValue = 0;
@@ -36,22 +37,15 @@ const calc = (price = 100) => {
          calcDay.value = "";
       }
 
-      //переменные для анимации
-      let end = 0,
-         step = 50,
-         animInterval = 0;
-
-      function animate() {
-         end += step;
-         if (end >= totalValue) {
-            end = totalValue;
-            cancelAnimationFrame(animInterval);
+      animate({
+         duration: 1000,
+         timing(timeFraction) {
+            return timeFraction;
+         },
+         draw(progress) {
+            total.textContent = Math.round(checkValue + progress * (totalValue - checkValue));
          }
-         total.textContent = end;
-         animInterval = requestAnimationFrame(animate);
-      }
-
-      animInterval = requestAnimationFrame(animate);
+      });
    };
 
    calcBlock.addEventListener('input', (e) => {
