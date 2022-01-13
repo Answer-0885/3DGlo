@@ -13,17 +13,17 @@ const sendForm = ({
 
       list.forEach((item) => {
          if (item.classList.contains('form-email')) {
-            if (item.value.match(/[^A-Za-z0-9@\-_.!~*']/, "")) {
+            if (!item.value.match(/.+@.+\..+/gi)) {
                success = false;
                return false;
             }
          } else if (item.classList.contains('form-phone')) {
-            if (item.value.match(/[^0-9()+\-]/, "")) {
+            if (!item.value.match(/^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{6,}$/gi)) {
                success = false;
                return false;
             }
          } else if (item.classList.contains('form-name') || item.classList.contains('top-form')) {
-            if (item.value.match(/\w+/, "")) {
+            if (!item.value.match(/^[а-яА-Я][а-яА-Я]+[а-яА-Я]?$/g)) {
                success = false;
                return false;
             }
@@ -79,9 +79,16 @@ const sendForm = ({
                formElements.forEach(input => {
                   input.value = ''
                });
+               setTimeout(() => {
+                  form.removeChild(statusBlock);
+               }, 5000);
             })
             .catch(error => {
                statusBlock.textContent = errorText
+               setTimeout(() => {
+                  form.removeChild(statusBlock);
+               }, 5000);
+
             })
       } else {
          alert('Данные не валидны!!!')

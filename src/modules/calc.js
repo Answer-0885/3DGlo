@@ -31,6 +31,9 @@ const calc = (price = 100) => {
          totalValue = price * calcTypeValue * calcSquareValue * calcCountValue * calcDayValue;
       } else {
          totalValue = 0;
+         calcSquare.value = "";
+         calcCount.value = "";
+         calcDay.value = "";
       }
 
       //переменные для анимации

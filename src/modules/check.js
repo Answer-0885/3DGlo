@@ -41,16 +41,16 @@ const check = () => {
 
    // Проверям чтобы введено было только кириллица в любом регистре, дефис и пробел.
    form1Name.addEventListener('input', (e) => {
-      e.target.value = e.target.value.replace(/\w+/, "")
+      e.target.value = e.target.value.replace(/[^А-Яа-я]/, "")
    });
    form2Name.addEventListener('input', (e) => {
-      e.target.value = e.target.value.replace(/\w+/, "")
+      e.target.value = e.target.value.replace(/[^А-Яа-я]/, "")
    });
    form2Message.addEventListener('input', (e) => {
-      e.target.value = e.target.value.replace(/\w+/, "")
+      e.target.value = e.target.value.replace(/[^А-Яа-я]/, "")
    });
    form3Name.addEventListener('input', (e) => {
-      e.target.value = e.target.value.replace(/\w+/, "")
+      e.target.value = e.target.value.replace(/[^А-Яа-я]/, "")
    });
 
    //Проверяем калькулятор на введённые значения
