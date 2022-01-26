@@ -1,8 +1,9 @@
 const sendForm = ({
-   formId,
+   formID,
    someElem = []
 }) => {
-   const form = document.getElementById(formId);
+   const form = document.getElementById(formID);
+   console.log(form)
    const statusBlock = document.createElement('div')
    const loadText = 'Загрузка...'
    const errorText = 'Ошибка...'
@@ -103,9 +104,7 @@ const sendForm = ({
 
       form.addEventListener('submit', (event) => {
          event.preventDefault()
-
          submitForm()
-
       })
    } catch (error) {
       console.log(error.message);

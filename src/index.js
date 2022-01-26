@@ -16,4 +16,24 @@ check();
 tabs();
 slider();
 calc(100);
-sendForm();
+sendForm({
+   formID: 'form1',
+   someElem: [{
+      type: 'block',
+      id: 'total'
+   }]
+});
+sendForm({
+   formID: 'form2',
+   someElem: [{
+      type: 'block',
+      id: 'total'
+   }]
+});
+sendForm({
+   formID: 'form3',
+   someElem: [{
+      type: 'block',
+      id: 'total'
+   }]
+});
