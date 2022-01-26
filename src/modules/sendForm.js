@@ -1,8 +1,8 @@
 const sendForm = ({
-   formID,
+   formId,
    someElem = []
 }) => {
-   const form = document.getElementById(formID);
+   const form = document.getElementById(formId);
    const statusBlock = document.createElement('div')
    const loadText = 'Загрузка...'
    const errorText = 'Ошибка...'
