@@ -3,11 +3,12 @@ const sendForm = ({
    someElem = []
 }) => {
    const form = document.getElementById(formID);
-   console.log(form)
-   const statusBlock = document.createElement('div')
-   const loadText = 'Загрузка...'
-   const errorText = 'Ошибка...'
-   const successText = 'Спасибо!Наш менеджер с вами свяжется.'
+   const modal = document.querySelector('.popup');
+   const statusBlock = document.createElement('div');
+   statusBlock.style.color = 'rgb(25,181,254)';
+   const loadText = 'Загрузка...';
+   const errorText = 'Ошибка...';
+   const successText = 'Спасибо!Наш менеджер с вами свяжется.';
 
    const validate = (list) => {
       let success = true;
@@ -56,8 +57,13 @@ const sendForm = ({
       const formData = new FormData(form)
       const formBody = {}
 
-      statusBlock.textContent = loadText
-      form.append(statusBlock)
+      //Если данные не валидны, то надпись "Загрузка" не появляется.
+      if (validate(formElements)) {
+         form.append(statusBlock)
+         statusBlock.textContent = loadText
+      } else {
+         statusBlock.textContent = "";
+      }
 
       formData.forEach((val, key) => {
          formBody[key] = val
@@ -81,14 +87,18 @@ const sendForm = ({
                   input.value = ''
                });
                setTimeout(() => {
+                  //Модальное окно после отправки данных закроется через 3 секунды.
                   form.removeChild(statusBlock);
-               }, 5000);
+                  if (modal.classList.contains('popup')) {
+                     modal.style.display = 'none';
+                  }
+               }, 3000);
             })
             .catch(error => {
                statusBlock.textContent = errorText
                setTimeout(() => {
                   form.removeChild(statusBlock);
-               }, 5000);
+               }, 3000);
 
             })
       } else {
@@ -102,11 +112,10 @@ const sendForm = ({
          throw new Error('Верните форму на место, пожааааалуйста!')
       }
 
-      form.addEventListener('submit', (event) => {
+      form.querySelector('button').addEventListener('click', (event) => {
          event.preventDefault()
-
          submitForm()
-         console.log('Отправлено');
+
       })
    } catch (error) {
       console.log(error.message);
