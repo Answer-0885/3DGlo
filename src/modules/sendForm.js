@@ -104,7 +104,9 @@ const sendForm = ({
 
       form.addEventListener('submit', (event) => {
          event.preventDefault()
+
          submitForm()
+         console.log('Отправлено');
       })
    } catch (error) {
       console.log(error.message);
