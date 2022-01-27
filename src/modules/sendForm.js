@@ -1,3 +1,8 @@
+import {
+   preload,
+   done,
+   errorForm
+} from './helper';
 const sendForm = ({
    formID,
    someElem = []
@@ -65,6 +70,22 @@ const sendForm = ({
          statusBlock.textContent = "";
       }
 
+      if (validate(formElements)) {
+         if (form.contains(done)) {
+            form.removeChild(done);
+         }
+
+         if (form.contains(errorForm)) {
+            form.removeChild(errorForm);
+         }
+         if (form.contains(preload)) {
+            form.removeChild(preload);
+         }
+
+         form.append(statusBlock);
+         form.append(preload);
+      }
+
       formData.forEach((val, key) => {
          formBody[key] = val
       })
@@ -81,6 +102,8 @@ const sendForm = ({
       if (validate(formElements)) {
          sendData(formBody)
             .then(data => {
+               form.removeChild(preload);
+               form.append(done);
                statusBlock.textContent = successText
 
                formElements.forEach(input => {
@@ -89,20 +112,24 @@ const sendForm = ({
                setTimeout(() => {
                   //Модальное окно после отправки данных закроется через 3 секунды.
                   form.removeChild(statusBlock);
+                  form.removeChild(done);
                   if (modal.classList.contains('popup')) {
                      modal.style.display = 'none';
                   }
                }, 3000);
             })
             .catch(error => {
+               form.removeChild(preload);
+               form.append(errorForm);
                statusBlock.textContent = errorText
                setTimeout(() => {
+                  form.removeChild(errorForm);
                   form.removeChild(statusBlock);
                }, 3000);
 
             })
       } else {
-         alert('Данные не валидны!!!')
+         alert('Введите пожалуйста Ваше имя и номер телефона')
       }
 
    }
