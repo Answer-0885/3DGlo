@@ -7,6 +7,7 @@ import slider from './modules/slider'
 import calc from './modules/calc'
 import sendForm from './modules/sendForm'
 import swiper from './modules/swiper'
+import swiper2 from './modules/swiper2'
 
 
 
@@ -18,6 +19,7 @@ tabs();
 slider();
 calc(100);
 swiper();
+swiper2();
 sendForm({
    formID: 'form1',
    someElem: [{
