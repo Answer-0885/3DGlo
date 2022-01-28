@@ -139,7 +139,7 @@ const sendForm = ({
          throw new Error('Верните форму на место, пожааааалуйста!')
       }
 
-      form.querySelector('button').addEventListener('click', (event) => {
+      form.addEventListener('submit', (event) => {
          event.preventDefault()
          submitForm()
 
