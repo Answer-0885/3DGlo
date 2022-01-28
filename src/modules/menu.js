@@ -6,7 +6,6 @@ const menu = () => {
 
 
    body.addEventListener('click', (e) => {
-      e.preventDefault()
 
       const eTarget = e.target.closest('a[href*="#"]');
 
@@ -18,6 +17,7 @@ const menu = () => {
          handleMenu();
          // Закрытие меню на крестик
       } else if (e.target.closest('.close-btn')) {
+         e.preventDefault()
          handleMenu();
          // Плавно перемещаемся к первому блоку при нажатии на кнопку 
       } else if (eTarget && main.contains(e.target)) {
