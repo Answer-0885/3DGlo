@@ -74,7 +74,6 @@ const sendForm = ({
          if (form.contains(done)) {
             form.removeChild(done);
          }
-
          if (form.contains(errorForm)) {
             form.removeChild(errorForm);
          }
@@ -109,8 +108,8 @@ const sendForm = ({
                formElements.forEach(input => {
                   input.value = ''
                });
+               //Модальное окно после отправки данных закроется через 3 секунды.
                setTimeout(() => {
-                  //Модальное окно после отправки данных закроется через 3 секунды.
                   form.removeChild(statusBlock);
                   form.removeChild(done);
                   if (modal.classList.contains('popup')) {
@@ -122,6 +121,7 @@ const sendForm = ({
                form.removeChild(preload);
                form.append(errorForm);
                statusBlock.textContent = errorText
+               // Сообщение об ошибке исчезнет через 3 секунды
                setTimeout(() => {
                   form.removeChild(errorForm);
                   form.removeChild(statusBlock);
