@@ -50,7 +50,7 @@ const sendForm = ({
    const sendData = (data) => {
       return fetch('https://jsonplaceholder.typicode.com/posts', {
          method: 'POST',
-         body: JSON.stringify(data),
+         body: JSON.stringify(data), // Это тот объект который мы отправляем на сервер
          headers: {
             "Content-Type": "application/json"
          }
