@@ -11,7 +11,7 @@ import swiper2 from './modules/swiper2'
 
 
 
-timer('31 may 2022');
+timer('31 december 2022');
 menu();
 modal();
 check();
